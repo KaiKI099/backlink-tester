@@ -33,11 +33,11 @@ export async function POST(request: NextRequest) {
     // Step 2: Analyze each discovered page
     const analysisResults = [];
     
-    for (let i = 0; i < Math.min(searchData.discoveredPages.length, 5); i++) {
+    for (let i = 0; i < Math.min(searchData.discoveredPages.length, 10); i++) {
       const page = searchData.discoveredPages[i];
       
       try {
-        console.log(`Analyzing page ${i + 1}/${Math.min(searchData.discoveredPages.length, 5)}: ${page.url}`);
+        console.log(`Analyzing page ${i + 1}/${Math.min(searchData.discoveredPages.length, 10)}: ${page.url}`);
         
         const crawlResponse = await fetch(`${request.url.replace('/api/discover', '/api/crawl')}`, {
           method: 'POST',
