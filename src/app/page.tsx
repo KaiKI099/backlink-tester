@@ -40,11 +40,13 @@ export default function Home() {
   const [results, setResults] = useState<SearchResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [searchParams, setSearchParams] = useState<{keywords: string; targetUrl: string} | null>(null);
 
   const handleSearch = async (url: string, keywords: string, targetUrl: string) => {
     setIsLoading(true);
     setError(null);
     setResults([]); // Clear previous results
+    setSearchParams({ keywords, targetUrl }); // Store search parameters
     
     try {
       const response = await fetch('/api/discover', {
@@ -110,7 +112,7 @@ export default function Home() {
             </div>
           )}
 
-          <SearchResults results={results} />
+          <SearchResults results={results} searchParams={searchParams} />
         </div>
       </div>
     </div>

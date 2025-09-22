@@ -111,7 +111,7 @@ export async function POST(request: NextRequest) {
               const title = titleElement.textContent?.trim() || '';
               const snippet = snippetElement?.textContent?.trim() || '';
               
-              // Enhanced filtering for German beauty/cosmetics sites and backlink opportunities
+              // Enhanced filtering for German sites and backlink opportunities
               if (url && 
                   !url.includes('google.com') && 
                   !url.includes('youtube.com') && 
@@ -131,10 +131,6 @@ export async function POST(request: NextRequest) {
                    url.includes('.de') ||
                    url.includes('.at') ||
                    url.includes('.ch') ||
-                   // Beauty/cosmetics specific domains
-                   url.includes('beauty') ||
-                   url.includes('kosmetik') ||
-                   url.includes('hautpflege') ||
                    // Content indicators in snippet
                    snippet.toLowerCase().includes('login') ||
                    snippet.toLowerCase().includes('register') ||
